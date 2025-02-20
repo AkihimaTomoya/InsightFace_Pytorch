@@ -29,10 +29,10 @@ Pytorch0.4.1 codes for InsightFace
 
 ## 3. How to use
 
-- clone
+clone the code
 
   ```
-  git clone https://github.com/TropComplique/mtcnn-pytorch.git
+  https://github.com/AkihimaTomoya/InsightFace_Pytorch.git
   ```
 
 ### 3.1 Data Preparation
