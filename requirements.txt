@@ -9,6 +9,6 @@ easydict
 pillow
 scikit-learn
 scipy
-bcolz-zipline==1.2.12
+bcolz-zipline==1.2.11
 tensorboardx
 
