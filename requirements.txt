@@ -1,9 +1,9 @@
 numpy==1.19.5
-bcolz-zipline==1.2.11
+bcolz-zipline==1.2.9
 torch
 torchvision
-matplotlib==3.3.4
-tqdm==4.56
+matplotlib==3.4.3
+tqdm
 mxnet
 opencv-python
 easydict
