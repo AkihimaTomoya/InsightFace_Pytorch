@@ -1,6 +1,6 @@
 # InsightFace_Pytorch
 
-Pytorch0.4.1 codes for InsightFace
+You should use Python 3.8 for best compatibility and stability with older machine learning libraries like MXNet and PyTorch, especially if you're encountering issues with NumPy deprecations and deserialization errors.
 
 ------
 
