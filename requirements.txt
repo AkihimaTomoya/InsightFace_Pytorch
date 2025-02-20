@@ -5,10 +5,10 @@ matplotlib==3.3.4
 tqdm==4.56
 mxnet
 opencv-python
-scipy
-bcolz-zipline
 easydict
 pillow
 scikit-learn
+scipy
+bcolz-zipline==1.2.12
 tensorboardx
 
