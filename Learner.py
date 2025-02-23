@@ -106,7 +106,6 @@ class face_learner(object):
                 else:
                     emb_batch = self.model(batch.to(conf.device))
     
-                # Kiểm tra nếu chạy trên GPU thì cần chuyển về CPU trước
                 if conf.device.type == "cuda":
                     embeddings[idx:idx + conf.batch_size] = l2_norm(emb_batch).cpu().numpy()
                 else:
