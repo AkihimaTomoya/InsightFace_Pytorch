@@ -92,33 +92,48 @@ class face_learner(object):
 #         self.writer.add_scalar('{}_val_std'.format(db_name), val_std, self.step)
 #         self.writer.add_scalar('{}_far:False Acceptance Ratio'.format(db_name), far, self.step)
         
-    def evaluate(self, conf, carray, issame, nrof_folds = 5, tta = False):
+    def evaluate(self, conf, carray, issame, nrof_folds=5, tta=False):
         self.model.eval()
         idx = 0
         embeddings = np.zeros([len(carray), conf.embedding_size])
+    
         with torch.no_grad():
             while idx + conf.batch_size <= len(carray):
                 batch = torch.tensor(carray[idx:idx + conf.batch_size])
                 if tta:
-                    fliped = hflip_batch(batch)
-                    emb_batch = self.model(batch.to(conf.device)) + self.model(fliped.to(conf.device))
-                    embeddings[idx:idx + conf.batch_size] = l2_norm(emb_batch)
+                    flipped = hflip_batch(batch)
+                    emb_batch = self.model(batch.to(conf.device)) + self.model(flipped.to(conf.device))
                 else:
-                    embeddings[idx:idx + conf.batch_size] = self.model(batch.to(conf.device)).cpu()
+                    emb_batch = self.model(batch.to(conf.device))
+    
+                # Kiểm tra nếu chạy trên GPU thì cần chuyển về CPU trước
+                if conf.device.type == "cuda":
+                    embeddings[idx:idx + conf.batch_size] = l2_norm(emb_batch).cpu().numpy()
+                else:
+                    embeddings[idx:idx + conf.batch_size] = l2_norm(emb_batch).numpy()
+    
                 idx += conf.batch_size
+    
             if idx < len(carray):
-                batch = torch.tensor(carray[idx:])            
+                batch = torch.tensor(carray[idx:])
                 if tta:
-                    fliped = hflip_batch(batch)
-                    emb_batch = self.model(batch.to(conf.device)) + self.model(fliped.to(conf.device))
-                    embeddings[idx:] = l2_norm(emb_batch)
+                    flipped = hflip_batch(batch)
+                    emb_batch = self.model(batch.to(conf.device)) + self.model(flipped.to(conf.device))
                 else:
-                    embeddings[idx:] = self.model(batch.to(conf.device)).cpu()
+                    emb_batch = self.model(batch.to(conf.device))
+    
+                if conf.device.type == "cuda":
+                    embeddings[idx:] = l2_norm(emb_batch).cpu().numpy()
+                else:
+                    embeddings[idx:] = l2_norm(emb_batch).numpy()
+    
         tpr, fpr, accuracy, best_thresholds = evaluate(embeddings, issame, nrof_folds)
         buf = gen_plot(fpr, tpr)
         roc_curve = Image.open(buf)
         roc_curve_tensor = trans.ToTensor()(roc_curve)
+        
         return accuracy.mean(), best_thresholds.mean(), roc_curve_tensor
+
     
     def find_lr(self,
                 conf,
