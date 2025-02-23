@@ -25,11 +25,9 @@ def main():
 
     for dataset in datasets:
         data, data_issame = get_val_pair(conf.webface_folder, dataset)
-        accuracy, best_threshold, roc_curve_tensor, tpr, fpr = learner.evaluate(conf, data, data_issame, nrof_folds=10, tta=True)
+        accuracy, best_threshold, roc_curve_tensor = learner.evaluate(conf, data, data_issame, nrof_folds=10, tta=True)
         
         print(f'{dataset} - Accuracy: {accuracy}, Threshold: {best_threshold}')
-        print(f'TPR: {tpr}')
-        print(f'FPR: {fpr}')
         
         trans.ToPILImage()(roc_curve_tensor)
 
