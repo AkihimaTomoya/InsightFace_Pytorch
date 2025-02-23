@@ -52,7 +52,7 @@ data/facebank/
            ---> id3_2.jpg
 ```
 
-#### 3.1.2 download the pretrained model to work_space/model
+#### 3.1.2 Download the pretrained model to work_space/model
 
 If more than 1 image appears in one folder, an average embedding will be calculated
 
@@ -60,7 +60,7 @@ If more than 1 image appears in one folder, an average embedding will be calcula
 
 download the refined dataset: (emore recommended)
 
-- [emore dataset @ BaiduDrive](https://pan.baidu.com/s/1eXohwNBHbbKXh5KHyItVhQ), [emore dataset @ Dropbox](https://www.dropbox.com/s/wpx6tqjf0y5mf6r/faces_ms1m-refine-v2_112x112.zip?dl=0)
+- [CASIA-Webface @ BaiduDrive](https://pan.baidu.com/s/1AfHdPsxJZBD8kBJeIhmq1w), [CASIA-Webface @ GDrive](https://drive.google.com/file/d/1KxNCrXzln0lal3N4JiYl9cFOIhT78y1l/view?usp=sharing)
 - More Dataset please refer to the [original post](https://github.com/deepinsight/insightface/wiki/Dataset-Zoo)
 
 **Note:** If you use the refined [MS1M](https://arxiv.org/abs/1607.08221) dataset and the cropped [VGG2](https://arxiv.org/abs/1710.08092) dataset, please cite the original papers.
@@ -74,7 +74,7 @@ download the refined dataset: (emore recommended)
   after the execution, you should find following structure:
 
 ```
-faces_emore/
+faces_webface_112x112/
             ---> agedb_30
             ---> calfw
             ---> cfp_ff
@@ -83,7 +83,6 @@ faces_emore/
             ---> cplfw
             --->imgs
             ---> lfw
-            ---> vgg2_fp
 ```
 
 ------
