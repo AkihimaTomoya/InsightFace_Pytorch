@@ -21,6 +21,7 @@ def main():
       
     learner = face_learner(conf, inference=True)
     learner.load_state(conf, model_path, model_only=True, from_save_folder=False)
+    print(f"Model {model_path} loaded")
 
     datasets = ['agedb_30', 'calfw', 'cfp_ff', 'cfp_fp', 'cplfw', 'lfw']
     
