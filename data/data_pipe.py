@@ -85,7 +85,7 @@ def load_mx_rec(rec_path):
     img_info = imgrec.read_idx(0)
     header,_ = mx.recordio.unpack(img_info)
     max_idx = int(header.label[0])
-    for idx in tqdm(range(1,max_idx)):
+    for idx in tqdm(range(1,max_idx+1)):
         img_info = imgrec.read_idx(idx)
         header, img = mx.recordio.unpack_img(img_info)
         label = int(header.label)
