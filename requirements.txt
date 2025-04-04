@@ -5,7 +5,7 @@ torchvision
 matplotlib==3.4.3
 tqdm
 mxnet==1.9.1
-opencv-python==4.10.0.84
+opencv-python==4.8.1.78
 easydict
 pillow
 scikit-learn
