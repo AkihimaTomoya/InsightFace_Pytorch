@@ -34,7 +34,7 @@ recognition_interval = 2
 @app.get("/")
 async def get_index():
     try:
-        with open("templates/fastapi-index.html", "r") as f:
+        with open("templates/index.html", "r") as f:
             content = f.read()
             return HTMLResponse(content=content)
     except FileNotFoundError:
