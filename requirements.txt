@@ -5,9 +5,12 @@ torchvision
 matplotlib==3.4.3
 tqdm
 mxnet==1.9.1
-opencv-python==4.8.1.78
+opencv-python
 easydict
 pillow
 scikit-learn
 scipy
 tensorboardx
+fastapi
+uvicorn[standard]
+jinja2
