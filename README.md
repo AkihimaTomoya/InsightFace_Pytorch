@@ -158,3 +158,7 @@ python train.py -b [batch_size] -lr [learning rate] -e [epochs]
 
 - PRs are welcome, in case that I don't have the resource to train some large models like the 100 and 151 layers model
 - Email : treb1en@qq.com
+## Prototype
+```
+python app.py
+```
